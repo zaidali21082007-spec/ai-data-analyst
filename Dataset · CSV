@@ -1,0 +1,21 @@
+OrderID,Product,Category,City,CustomerAge,Sales,OrderDate
+1,Laptop,Electronics,Karachi,29,120000,2024-01-05
+2,Smartphone,Electronics,Lahore,34,85000,2024-01-07
+3,T-Shirt,Clothing,Karachi,22,1500,2024-01-10
+4,Headphones,Electronics,Islamabad,27,4500,2024-01-12
+5,Jeans,Clothing,Lahore,31,3200,2024-01-15
+6,Blender,Home Appliances,Karachi,45,7800,2024-01-18
+7,Smartwatch,Electronics,Karachi,26,15000,2024-01-20
+8,Sofa,Furniture,Islamabad,50,65000,2024-01-22
+9,Sneakers,Clothing,Lahore,24,6000,2024-01-25
+10,Refrigerator,Home Appliances,Karachi,38,95000,2024-01-28
+11,Laptop,Electronics,Lahore,29,118000,2024-02-02
+12,Jacket,Clothing,Islamabad,33,8500,2024-02-05
+13,Television,Electronics,Karachi,41,72000,2024-02-08
+14,Dining Table,Furniture,Lahore,47,45000,2024-02-11
+15,Microwave,Home Appliances,Islamabad,36,12000,2024-02-14
+16,Smartphone,Electronics,Karachi,25,89000,2024-02-17
+17,Cap,Clothing,Karachi,20,900,2024-02-19
+18,Office Chair,Furniture,Lahore,39,15500,2024-02-22
+19,Washing Machine,Home Appliances,Karachi,44,58000,2024-02-25
+20,Tablet,Electronics,Islamabad,28,55000,2024-02-28
