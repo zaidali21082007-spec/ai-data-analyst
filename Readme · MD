@@ -1,0 +1,79 @@
+# AI Data Analysis Assistant (Track A – Explorer)
+
+A Streamlit app that loads a CSV dataset, analyzes it, answers natural-language
+questions using the **Groq LLM API**, generates a chart, and explains the findings.
+
+## Project Structure
+
+```
+project/
+├── app.py              # Main Streamlit app
+├── analysis.py          # Dataset loading, stats, Q&A engine
+├── visualization.py      # Chart generation (Plotly)
+├── dataset.csv           # Sample dataset
+├── requirements.txt
+├── runtime.txt           # Pins Python 3.12 for Streamlit Cloud
+└── README.md
+```
+
+## How It Works
+
+1. **Load Dataset** – Upload any CSV. The app shows rows, columns, column
+   names, data types, and missing values.
+2. **Analyze** – Automatically computes averages, max/min, counts, and
+   category distributions with pandas/NumPy.
+3. **Answer Questions** – Type up to three questions. Each question is:
+   - interpreted by one Groq LLM call into a structured intent (which
+     column, which operation),
+   - answered with pandas (so the number/name is always accurate, never
+     hallucinated),
+   - phrased naturally by a second short LLM call.
+   - If no API key is provided, a pure keyword-matching fallback answers
+     instead — the app never breaks without an API key.
+4. **Generate Chart** – Picks a suitable chart (bar, pie, histogram, line,
+   or scatter) based on the dataset's column types, or you can force a type
+   from the sidebar.
+5. **Explain** – Groq generates a one-sentence, plain-language explanation
+   of the chart (falls back to a rule-based explanation if no API key).
+
+## Setup (Local)
+
+```bash
+# Requires Python 3.12
+python3.12 -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Then open the sidebar and paste your **Groq API key** (get one free at
+https://console.groq.com/keys), or set it as an environment variable:
+
+```bash
+export GROQ_API_KEY="your_key_here"
+streamlit run app.py
+```
+
+## Deploy on Streamlit Cloud
+
+1. Push this folder to a GitHub repo (root must contain `app.py` and
+   `requirements.txt`).
+2. On https://share.streamlit.io, click **New app**, pick the repo/branch,
+   and set the main file to `app.py`.
+3. In **Advanced settings → Secrets**, add:
+   ```toml
+   GROQ_API_KEY = "your_key_here"
+   ```
+4. Deploy. `runtime.txt` tells Streamlit Cloud to use Python 3.12.
+
+## Notes
+
+- `kaleido` is needed for PNG chart export (`pip install -U kaleido`) —
+  optional bonus feature.
+- The app works fully offline (rule-based) if no Groq key is set, satisfying
+  "runs without manual code modification."
+- Try the sample `dataset.csv` (retail sales) with questions like:
+  - "Which product generated the highest sales?"
+  - "What is the average age of customers?"
+  - "Which city has the maximum orders?"
+  - "Which category appears most frequently?"
